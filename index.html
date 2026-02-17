@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Visuarium — Referencias visuales para creativos</title>
+  <meta name="description" content="Herramientas y recursos visuales curados para creativos publicitarios. Cinematografía, gráfica, tipografía, color, música, campañas y trabajo premiado." />
+  <meta property="og:title" content="Visuarium — Referencias visuales para creativos" />
+  <meta property="og:description" content="Herramientas y recursos curados para creativos publicitarios." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="es_ES" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Visuarium — Referencias visuales para creativos" />
+  <meta name="twitter:description" content="Herramientas y recursos curados para creativos publicitarios." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2'><polygon points='12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5 12 2'/></svg>" type="image/svg+xml" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Geist+Mono:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #121212;
+      --surface: #1E1E1E;
+      --surface-hover: #2A2A2A;
+      --surface-border: rgba(255,255,255,0.08);
+      --surface-border-hover: rgba(255,255,255,0.15);
+      --text-primary: #ffffff;
+      --text-secondary: #d4d4d4;
+      --text-tertiary: #a3a3a3;
+      --text-micro: #737373;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-orange: #FF6B00;
+      --green: #4ade80;
+      --green-bg: rgba(74,222,128,0.15);
+      --green-border: rgba(74,222,128,0.25);
+      --amber: #fbbf24;
+      --amber-bg: rgba(251,191,36,0.15);
+      --amber-border: rgba(251,191,36,0.25);
+      --blue-tag: #60a5fa;
+      --blue-tag-bg: rgba(96,165,250,0.15);
+      --blue-tag-border: rgba(96,165,250,0.25);
+      --gold: #facc15;
+      --gold-bg: rgba(250,204,21,0.15);
+      --gold-border: rgba(250,204,21,0.25);
+      --shadow-preview: 0 20px 50px rgba(0,0,0,0.5), 0 10px 20px rgba(0,0,0,0.3);
+      --shadow-card: 0 2px 8px rgba(0,0,0,0.2);
+      --search-overlay-bg: rgba(0,0,0,0.6);
+      --search-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      --eye-bg: #ffffff;
+      --pupil-bg: #000000;
+      --font: 'Inter', -apple-system, sans-serif;
+      --font-mono: 'Geist Mono', monospace;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    html.light-mode {
+      --bg: #faf9f7;
+      --surface: #ffffff;
+      --surface-hover: #f5f4f2;
+      --surface-border: rgba(0,0,0,0.08);
+      --surface-border-hover: rgba(0,0,0,0.15);
+      --text-primary: #1a1a1a;
+      --text-secondary: #5c5c5c;
+      --text-tertiary: #8c8c8c;
+      --text-micro: #a3a3a3;
+      --accent: #2563eb;
+      --accent-hover: #1d4ed8;
+      --accent-orange: #FF6B00;
+      --green: #16a34a;
+      --green-bg: rgba(22,163,74,0.1);
+      --green-border: rgba(22,163,74,0.25);
+      --amber: #d97706;
+      --amber-bg: rgba(217,119,6,0.1);
+      --amber-border: rgba(217,119,6,0.25);
+      --blue-tag: #2563eb;
+      --blue-tag-bg: rgba(37,99,235,0.08);
+      --blue-tag-border: rgba(37,99,235,0.2);
+      --gold: #ca8a04;
+      --gold-bg: rgba(202,138,4,0.1);
+      --gold-border: rgba(202,138,4,0.25);
+      --shadow-preview: 0 20px 50px rgba(0,0,0,0.12), 0 10px 20px rgba(0,0,0,0.06);
+      --shadow-card: 0 2px 8px rgba(0,0,0,0.04);
+      --search-overlay-bg: rgba(250,249,247,0.8);
+      --search-shadow: 0 8px 32px rgba(0,0,0,0.08);
+      --eye-bg: #1a1a1a;
+      --pupil-bg: #ffffff;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text-primary);
+      font-family: var(--font);
+      font-size: 15px;
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* ═══ GRID BG ═══ */
+    .grid-bg { position:fixed; inset:0; z-index:0; pointer-events:none; }
+    .grid-bg::before {
+      content:''; position:absolute; inset:0;
+      background-image: linear-gradient(var(--surface-border) 1px, transparent 1px), linear-gradient(90deg, var(--surface-border) 1px, transparent 1px);
+      background-size: 72px 72px; opacity: 0.5;
+    }
+    .corner-cross { position:absolute; width:16px; height:16px; opacity:0.6; }
+    .corner-cross::before, .corner-cross::after { content:''; position:absolute; background:var(--surface-border); }
+    .corner-cross::before { width:16px; height:1px; top:50%; left:0; }
+    .corner-cross::after { width:1px; height:16px; left:50%; top:0; }
+    .corner-tl { top:72px; left:72px; }
+    .corner-tr { top:72px; right:72px; }
+    .corner-bl { bottom:72px; left:72px; }
+
+    @media (max-width:768px) {
+      .corner-cross { display:none; }
+    }
+
+    /* ═══ NAV ═══ */
+    .nav {
+      position:fixed; top:0; left:0; right:0; z-index:100;
+      height:56px; padding:0 16px; display:flex; align-items:center; justify-content:space-between;
+      background: color-mix(in srgb, var(--bg) 85%, transparent);
+      backdrop-filter: blur(20px); border-bottom: 1px solid var(--surface-border);
+      transition: background 0.3s;
+    }
+    .nav-left, .nav-right { width:120px; display:flex; align-items:center; }
+    .nav-right { justify-content:flex-end; gap:8px; }
+    .nav-logo {
+      display:flex; align-items:center; gap:10px; font-weight:700; font-size:17px;
+      letter-spacing:-0.03em; color:var(--text-primary); text-decoration:none;
+      transition: opacity 0.15s;
+    }
+    .nav-logo:hover { opacity:0.8; }
+    .nav-center { position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); }
+
+    /* Eyes */
+    .eye-container { display:flex; gap:4px; align-items:center; pointer-events:none; }
+    .eye {
+      width:16px; height:16px; background:var(--eye-bg); border-radius:50%;
+      position:relative; display:flex; align-items:center; justify-content:center;
+      transition: background 0.3s;
+    }
+    .pupil {
+      width:7px; height:7px; background:var(--pupil-bg); border-radius:50%;
+      position:absolute; transition: transform 0.1s ease-out, background 0.3s;
+    }
+
+    .nav-btn {
+      width:36px; height:36px; display:flex; align-items:center; justify-content:center;
+      border-radius:8px; border:1px solid var(--surface-border); background:none;
+      color:var(--text-tertiary); cursor:pointer; transition:all 0.15s;
+    }
+    .nav-btn:hover { color:var(--text-primary); border-color:var(--surface-border-hover); background:var(--surface); }
+    .nav-btn svg { width:16px; height:16px; }
+    .nav-btn .material-symbols-outlined { font-size:18px; }
+
+    /* ═══ SEARCH OVERLAY ═══ */
+    .search-overlay {
+      display:none; position:fixed; inset:0; z-index:200;
+      background:var(--search-overlay-bg); backdrop-filter:blur(4px);
+      align-items:flex-start; justify-content:center; padding:120px 16px 0;
+    }
+    .search-overlay.open { display:flex; }
+    .search-modal {
+      background:var(--surface); border:1px solid var(--surface-border);
+      border-radius:16px; width:100%; max-width:560px; overflow:hidden;
+      box-shadow:var(--search-shadow); animation:searchIn 0.2s var(--ease);
+    }
+    @keyframes searchIn { from{opacity:0;transform:translateY(-8px) scale(0.98)} to{opacity:1;transform:translateY(0) scale(1)} }
+    .search-header { display:flex; align-items:center; gap:12px; padding:16px 20px; border-bottom:1px solid var(--surface-border); }
+    .search-header svg { width:18px; height:18px; color:var(--text-tertiary); flex-shrink:0; }
+    .search-input { flex:1; background:none; border:none; outline:none; color:var(--text-primary); font-size:15px; font-family:var(--font); }
+    .search-input::placeholder { color:var(--text-micro); }
+    .search-close { font-family:var(--font-mono); font-size:10px; color:var(--text-micro); background:var(--surface-hover); border:1px solid var(--surface-border); padding:2px 6px; border-radius:4px; cursor:pointer; }
+    .search-results { max-height:400px; overflow-y:auto; padding:8px; }
+    .search-results::-webkit-scrollbar { width:4px; }
+    .search-results::-webkit-scrollbar-thumb { background:var(--surface-border); border-radius:2px; }
+    .search-result-item { display:flex; flex-direction:column; gap:2px; padding:12px 14px; border-radius:10px; cursor:pointer; transition:background 0.12s; text-decoration:none; }
+    .search-result-item:hover { background:var(--surface-hover); }
+    .sr-name { font-size:14px; font-weight:600; color:var(--text-primary); }
+    .sr-meta { font-size:12px; color:var(--text-tertiary); font-family:var(--font-mono); }
+    .sr-desc { font-size:13px; color:var(--text-secondary); line-height:1.5; margin-top:2px; }
+    .search-empty { padding:32px 20px; text-align:center; color:var(--text-micro); font-size:13px; }
+
+    /* ═══ MAIN ═══ */
+    .main { position:relative; z-index:1; padding-top:96px; max-width:1200px; margin:0 auto; min-height:100vh; }
+
+    /* ═══ TABS (pill style from code.html) ═══ */
+    .tabs-wrap {
+      display:flex; flex-wrap:wrap; justify-content:center; gap:8px;
+      padding:0 16px; margin-bottom:32px;
+    }
+    .sub-tab {
+      padding:10px 20px; font-size:15px; border-radius:9999px; border:1px solid var(--surface-border);
+      background:var(--surface); color:var(--text-secondary); cursor:pointer;
+      transition:all 0.3s ease-out; font-family:var(--font); line-height:1;
+      white-space:nowrap; user-select:none;
+    }
+    .sub-tab:hover { border-color:var(--text-tertiary); color:var(--text-primary); background:var(--surface-hover); }
+    .sub-tab.active {
+      background:var(--accent-orange); border-color:var(--accent-orange);
+      color:#fff; transform:scale(1.05); box-shadow:0 4px 12px rgba(255,107,0,0.3); z-index:1;
+    }
+
+    @media (max-width:768px) {
+      .tabs-wrap { gap:6px; }
+      .sub-tab { padding:8px 14px; font-size:13px; }
+    }
+
+    /* ═══ TOOL GRID ═══ */
+    .tool-grid {
+      display:grid; grid-template-columns:repeat(auto-fill, minmax(340px, 1fr));
+      gap:14px; padding:0 16px 80px;
+    }
+    @media (min-width:769px) { .tool-grid { padding:0 32px 80px; } }
+    @media (max-width:768px) { .tool-grid { grid-template-columns:1fr; } }
+
+    /* ═══ TOOL CARD ═══ */
+    .tool-card {
+      background:var(--surface); border:1px solid var(--surface-border); border-radius:14px;
+      padding:24px; display:flex; flex-direction:column; transition:all 0.2s; position:relative;
+    }
+    .tool-card:hover { border-color:var(--surface-border-hover); transform:translateY(-1px); box-shadow:var(--shadow-card); }
+
+    .tc-header { display:flex; align-items:flex-start; gap:14px; margin-bottom:14px; }
+    .tc-thumb {
+      width:40px; height:40px; border-radius:8px; border:1px solid var(--surface-border);
+      background:var(--surface-hover); flex-shrink:0; display:flex; align-items:center;
+      justify-content:center; overflow:hidden;
+    }
+    .tc-thumb img { width:100%; height:100%; object-fit:cover; border-radius:7px; display:block; }
+    .tc-thumb-fallback { font-family:var(--font-mono); font-size:13px; font-weight:600; color:var(--text-micro); }
+    .tc-meta { flex:1; min-width:0; }
+    .tc-type { font-family:var(--font-mono); font-size:12px; letter-spacing:0.03em; color:var(--text-tertiary); display:block; margin-bottom:2px; }
+    .tc-name-row { display:flex; align-items:center; flex-wrap:wrap; }
+    .tc-name { font-size:17px; font-weight:700; color:var(--text-primary); letter-spacing:-0.02em; line-height:1.2; }
+    .tc-featured {
+      font-family:var(--font-mono); font-size:10px; color:var(--gold);
+      background:var(--gold-bg); border:1px solid var(--gold-border);
+      padding:2px 6px; border-radius:4px; margin-left:8px; white-space:nowrap;
+      display:inline-flex; align-items:center; gap:3px;
+    }
+    .tc-featured svg { width:10px; height:10px; }
+    .tc-price-wrap { flex-shrink:0; margin-left:auto; }
+    .price-badge { font-family:var(--font-mono); font-size:11px; font-weight:500; letter-spacing:0.03em; padding:3px 9px; border-radius:6px; }
+    .price-free { background:var(--green-bg); color:var(--green); border:1px solid var(--green-border); }
+    .price-paid { background:var(--amber-bg); color:var(--amber); border:1px solid var(--amber-border); }
+    .price-freemium { background:var(--blue-tag-bg); color:var(--blue-tag); border:1px solid var(--blue-tag-border); }
+    .tc-url { font-family:var(--font-mono); font-size:12px; color:var(--text-micro); text-decoration:none; display:block; margin-bottom:10px; transition:color 0.15s; }
+    .tool-card:hover .tc-url { color:var(--text-tertiary); }
+    .tc-desc { font-size:14px; color:var(--text-secondary); line-height:1.65; flex:1; margin-bottom:16px; }
+    .tc-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:18px; }
+    .tc-tag { font-family:var(--font-mono); font-size:11px; letter-spacing:0.02em; color:var(--text-micro); background:var(--surface-hover); border:1px solid var(--surface-border); padding:3px 9px; border-radius:6px; }
+    .tc-open {
+      display:block; text-align:center; padding:10px 16px; background:var(--surface-hover);
+      border:1px solid var(--surface-border); color:var(--text-secondary); font-size:13px; font-weight:500;
+      border-radius:9px; text-decoration:none; transition:all 0.15s; font-family:var(--font);
+    }
+    .tc-open:hover { color:var(--text-primary); border-color:var(--surface-border-hover); }
+    .tc-open.primary { background:var(--accent); border-color:var(--accent); color:#fff; }
+    .tc-open.primary:hover { background:var(--accent-hover); border-color:var(--accent-hover); }
+    .fest-award { font-family:var(--font-mono); font-size:12px; color:var(--gold); margin-bottom:10px; display:block; }
+
+    /* ═══ SCREENSHOT PREVIEW ═══ */
+    .screenshot-preview {
+      position:fixed; z-index:1000; width:320px; height:200px; background:var(--surface);
+      border:1px solid var(--surface-border); border-radius:12px; box-shadow:var(--shadow-preview);
+      overflow:hidden; pointer-events:none; opacity:0; transform:scale(0.95) translateY(10px);
+      transition:opacity 0.2s ease, transform 0.2s ease;
+    }
+    .screenshot-preview.visible { opacity:1; transform:scale(1) translateY(0); }
+    .screenshot-preview img { width:100%; height:100%; object-fit:cover; display:block; }
+    .screenshot-preview .loading {
+      position:absolute; inset:0; display:flex; align-items:center; justify-content:center;
+      background:var(--surface-hover); color:var(--text-micro); font-size:12px; font-family:var(--font-mono);
+    }
+    .screenshot-preview .loading::after {
+      content:''; width:20px; height:20px; border:2px solid var(--surface-border);
+      border-top-color:var(--text-tertiary); border-radius:50%;
+      animation:spin 0.8s linear infinite; margin-left:8px;
+    }
+    @keyframes spin { to { transform:rotate(360deg); } }
+    @media (max-width:768px) { .screenshot-preview { display:none !important; } }
+
+    /* ═══ FOOTER ═══ */
+    .divider { height:1px; background:var(--surface-border); margin:0 16px; }
+    @media (min-width:769px) { .divider { margin:0 32px; } }
+    .footer {
+      padding:32px 16px 56px; display:flex; flex-wrap:wrap; justify-content:space-between; align-items:center; gap:8px;
+    }
+    @media (min-width:769px) { .footer { padding:32px 32px 56px; } }
+    .footer-text { font-family:var(--font-mono); font-size:12px; color:var(--text-micro); }
+    .footer-text a { color:var(--text-micro); text-decoration:none; transition:color 0.15s; }
+    .footer-text a:hover { color:var(--text-tertiary); }
+
+    /* ═══ FADE-UP ═══ */
+    .fade-up { opacity:0; transform:translateY(14px); transition:all 0.45s var(--ease); }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+    .stagger > .fade-up:nth-child(1){transition-delay:0s}
+    .stagger > .fade-up:nth-child(2){transition-delay:.04s}
+    .stagger > .fade-up:nth-child(3){transition-delay:.08s}
+    .stagger > .fade-up:nth-child(4){transition-delay:.12s}
+    .stagger > .fade-up:nth-child(5){transition-delay:.16s}
+    .stagger > .fade-up:nth-child(6){transition-delay:.2s}
+    .stagger > .fade-up:nth-child(7){transition-delay:.24s}
+    .stagger > .fade-up:nth-child(8){transition-delay:.28s}
+  </style>
+</head>
+<body>
+
+<div class="grid-bg">
+  <div class="corner-cross corner-tl"></div>
+  <div class="corner-cross corner-tr"></div>
+  <div class="corner-cross corner-bl"></div>
+</div>
+
+<nav class="nav">
+  <div class="nav-left">
+    <a class="nav-logo" href="#">Visuarium</a>
+  </div>
+  <div class="nav-center">
+    <div class="eye-container" id="googlyEyes">
+      <div class="eye"><div class="pupil"></div></div>
+      <div class="eye"><div class="pupil"></div></div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <button class="nav-btn" id="themeToggle" title="Cambiar tema">
+      <span class="material-symbols-outlined">light_mode</span>
+    </button>
+    <button class="nav-btn" onclick="openSearch()" title="Buscar (⌘K)">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+    </button>
+  </div>
+</nav>
+
+<div class="search-overlay" id="searchOverlay" onclick="if(event.target===this) closeSearch()">
+  <div class="search-modal">
+    <div class="search-header">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+      <input class="search-input" id="searchInput" type="text" placeholder="Buscar herramienta o recurso..." autocomplete="off" />
+      <button class="search-close" onclick="closeSearch()">ESC</button>
+    </div>
+    <div class="search-results" id="searchResults"></div>
+  </div>
+</div>
+
+<div class="screenshot-preview" id="screenshotPreview">
+  <div class="loading">Cargando</div>
+  <img src="" alt="Preview" />
+</div>
+
+<main class="main">
+  <section style="padding:0 16px 24px;">
+    <div class="tabs-wrap fade-up" id="subTabs"></div>
+  </section>
+
+  <div class="tool-grid stagger" id="toolGrid"></div>
+
+  <div class="divider"></div>
+  <footer class="footer">
+    <span class="footer-text">Visuarium — Referencias visuales para creativos</span>
+    <span class="footer-text">Curado por <a href="https://www.linkedin.com/in/johny-acosta-arteta-7416911b2/" target="_blank" rel="noopener">Johny Acosta</a></span>
+  </footer>
+</main>
+
+<script>
+
+const SUBCATEGORIES = [
+  { id:'cinematography', name:'Cinematografía & Spots', tools:[
+    { type:'Biblioteca cinematográfica', name:'ShotDeck', url:'https://shotdeck.com', price:'paid', desc:'Millones de fotogramas buscables por color, composición, iluminación y emoción. Creado por el DOP nominado al Oscar Lawrence Sher.', tags:['Fotogramas','Color','Iluminación'], featured:true },
+    { type:'Galería cinematográfica', name:'Film Grab', url:'https://film-grab.com', price:'free', desc:'Capturas de películas por título. Cuando tienes un referente concreto en mente y quieres explorar su lenguaje visual completo.', tags:['Por película','Fotogramas','Gratis'] },
+    { type:'Análisis de color', name:'Shot Cafe', url:'https://shot.cafe', price:'free', desc:'Fotogramas con RGB Parade incluido. Para comunicar el tratamiento de color exacto a tu colorista sin ambigüedades.', tags:['Etalonaje','RGB Parade','Color'] },
+    { type:'IA + referencia', name:'Film Vibes', url:'https://filmvibes.io', price:'free', desc:'Describes el mood y te devuelve fotogramas de spots relevantes. Búsqueda semántica por IA orientada a publicidad audiovisual.', tags:['IA','Spots','Mood'] },
+    { type:'IA cinematográfica', name:'Flim', url:'https://app.flim.ai', price:'freemium', desc:'Buscador de referencias cinematográficas con IA. Filtra por color, mood, composición y más en una base de datos masiva de fotogramas.', tags:['IA','Fotogramas','Búsqueda'] },
+    { type:'Técnicas en movimiento', name:'Eyecandy', url:'https://eyecannndy.com', price:'free', desc:'Técnicas cinematográficas en GIF: crash zoom, split diopter, match cut... Para comunicar con el director sin ambigüedades.', tags:['Técnicas','GIFs','Cámara'] },
+    { type:'Biblioteca mixta', name:'Frame Set', url:'https://frameset.app', price:'freemium', desc:'+430.000 fotogramas con filtros para comerciales. Para encontrar el tipo de plano exacto que necesitas justificar al director.', tags:['Planos','Comerciales','+430k'] },
+    { type:'Fotogramas de cada frame', name:'Every Single Frame', url:'https://www.everysingleframe.com', price:'free', desc:'Cada fotograma de películas icónicas mostrado como póster visual. Una forma única de ver el lenguaje de color y ritmo de una película entera.', tags:['Fotogramas','Pósters','Color'] },
+    { type:'Directorio de directores', name:"Director's Library", url:'https://directorslibrary.com', price:'free', desc:'Directorio de directores de cine publicitario con sus trabajos. Para buscar el director adecuado por estilo y reel.', tags:['Directores','Spots','Reels'] },
+    { type:'Diálogos de cine', name:'PlayPhrase', url:'https://www.playphrase.me', price:'free', desc:'Busca cualquier frase y encuentra el clip de película donde se dice. Para referencias de diálogo, tono y actuación.', tags:['Diálogos','Clips','Búsqueda'] },
+  ]},
+  { id:'graphic', name:'Gráfica & Print', tools:[
+    { type:'Gráfica publicitaria', name:"Lürzer's Archive", url:'https://www.luerzersarchive.com', price:'freemium', desc:'La biblia del diseño gráfico publicitario desde 1984. Selecciona la mejor publicidad gráfica mundial. Print, poster, packaging.', tags:['Print','Gráfica','Histórico'], featured:true },
+    { type:'Portfolios creativos', name:'Behance', url:'https://behance.net', price:'free', desc:'Para buscar fotógrafos y directores por estilo. Cuando necesitas encontrar el talento adecuado para una estética muy definida.', tags:['Fotógrafos','Directores','Talento'] },
+    { type:'Diseño web curado', name:'Siteinspire', url:'https://siteinspire.com', price:'free', desc:'Galería curada de diseño web de alta calidad. Para referencias de composición y jerarquía tipográfica en piezas digitales.', tags:['Composición','Tipografía','Digital'] },
+    { type:'Pósters tipográficos', name:'Typographic Posters', url:'https://www.typographicposters.com', price:'free', desc:'Galería curada de pósters tipográficos de todo el mundo. Referencia pura para diseño gráfico con tipografía como protagonista.', tags:['Pósters','Tipografía','Galería'] },
+  ]},
+  { id:'art', name:'Arte & Cultura', tools:[
+    { type:'Arte & cultura', name:'Colossal', url:'https://thisiscolossal.com', price:'free', desc:'Arte contemporáneo, fotografía e instalación. Para cuando la idea necesita salir del mundo publicitario y conectar con algo más grande.', tags:['Arte','Cultura','Instalación'] },
+    { type:'Industria creativa', name:"It's Nice That", url:'https://itsnicethat.com', price:'free', desc:'La referencia de la industria creativa global. Diseño, publicidad e ilustración con criterio editorial sólido.', tags:['Diseño','Publicidad','Editorial'] },
+    { type:'Creadores globales', name:'WePresent', url:'https://wepresent.wetransfer.com', price:'free', desc:'Historias sobre artistas, fotógrafos y cineastas del mundo entero. Para cuando necesitas un referente humano, no solo visual.', tags:['Artistas','Historias','Global'] },
+    { type:'Cultura visual', name:'Nowness', url:'https://nowness.com', price:'free', desc:'Cortometrajes, documentales y piezas de arte visual comisionadas. Cuando necesitas referencias que trascienden la publicidad.', tags:['Cortometrajes','Arte','Premium'] },
+  ]},
+  { id:'stock', name:'Stock Foto & Video', tools:[
+    { type:'Fotografía gratuita', name:'Unsplash', url:'https://unsplash.com', price:'free', desc:'La mejor biblioteca de fotos gratuitas en alta resolución. Licencia libre para uso comercial sin atribución.', tags:['Fotos','Gratis','Alta resolución'], featured:true },
+    { type:'Fotos y video', name:'Pexels', url:'https://pexels.com', price:'free', desc:'Fotos y videos gratuitos. Alternativa a Unsplash con buena selección de video stock.', tags:['Fotos','Video','Gratis'] },
+    { type:'Video cinematográfico', name:'Artgrid', url:'https://artgrid.io', price:'paid', desc:'Stock de video cinematográfico premium. De los creadores de Artlist, calidad de producción profesional.', tags:['Video','Cinematográfico','Premium'], featured:true },
+    { type:'Video gratuito', name:'Pexels Video', url:'https://pexels.com/videos', price:'free', desc:'Sección de video de Pexels. Videos gratuitos para proyectos con presupuesto limitado.', tags:['Video','Gratis','Stock'] },
+    { type:'Video para web', name:'Coverr', url:'https://coverr.co', price:'free', desc:'Videos gratuitos pensados para fondos web y headers. Loops y clips cortos de alta calidad.', tags:['Web','Loops','Gratis'] },
+  ]},
+  { id:'typography', name:'Tipografía', tools:[
+    { type:'Tipografía en contexto', name:'Fonts In Use', url:'https://fontsinuse.com', price:'free', desc:'Tipografía en contexto real. Para ver cómo se usan las fuentes en proyectos reales de diseño, editorial y publicidad.', tags:['Tipografía','Contexto','Editorial'], featured:true },
+    { type:'Combinaciones tipográficas', name:'Typewolf', url:'https://typewolf.com', price:'free', desc:'Combinaciones tipográficas y tendencias. Recomendaciones de fuentes similares y pairings que funcionan.', tags:['Pairings','Tendencias','Recomendaciones'] },
+    { type:'Google Fonts', name:'FontPair', url:'https://fontpair.co', price:'free', desc:'Combinaciones de Google Fonts que funcionan juntas. Para proyectos con presupuesto limitado de tipografía.', tags:['Google Fonts','Pairings','Gratis'] },
+    { type:'Escala tipográfica', name:'Type Scale', url:'https://typescale.com', price:'free', desc:'Generador de escalas tipográficas. Para establecer jerarquía visual consistente en cualquier proyecto.', tags:['Escala','Jerarquía','Herramienta'] },
+    { type:'Fundición tipográfica', name:'Pangram Pangram', url:'https://pangrampangram.com', price:'freemium', desc:'Fundición tipográfica independiente con fuentes de alta calidad. Trial fonts gratuitas para explorar antes de comprar.', tags:['Fundición','Fuentes','Trial'] },
+    { type:'Tipografía chilena', name:'Quintana', url:'https://quintana-font.cl', price:'free', desc:'Proyecto tipográfico chileno de código abierto. Fuentes diseñadas con identidad latinoamericana.', tags:['Open source','LATAM','Display'] },
+  ]},
+  { id:'color', name:'Color', tools:[
+    { type:'Generador de paletas', name:'Coolors', url:'https://coolors.co', price:'freemium', desc:'Generador de paletas de color. Genera, explora y guarda combinaciones de colores para cualquier proyecto.', tags:['Paletas','Generador','Exportar'], featured:true },
+    { type:'Paletas con IA', name:'Khroma', url:'https://khroma.co', price:'free', desc:'Generador de paletas con IA. Aprende tus preferencias y genera paletas personalizadas infinitas.', tags:['IA','Personalizado','Paletas'] },
+    { type:'Paletas curadas', name:'Color Hunt', url:'https://colorhunt.co', price:'free', desc:'Paletas de color curadas por la comunidad. Miles de combinaciones organizadas por popularidad y tendencia.', tags:['Comunidad','Tendencias','Curado'] },
+    { type:'Rueda de color', name:'Adobe Color', url:'https://color.adobe.com', price:'free', desc:'Rueda de color y extracción de paletas desde imágenes. Integración directa con Creative Cloud.', tags:['Adobe','Extracción','Rueda de color'] },
+    { type:'Paletas generativas', name:'Genery', url:'https://genery.io', price:'free', desc:'Generador de paletas de color con enfoque creativo. Explora combinaciones inesperadas para tus proyectos.', tags:['Generador','Paletas','Creativo'] },
+  ]},
+  { id:'music', name:'Música & Sonido', tools:[
+    { type:'Música para publicidad', name:'Epidemic Sound', url:'https://epidemicsound.com', price:'paid', desc:'Biblioteca de música y efectos para publicidad. Licencia clara para uso comercial en spots y contenido de marca.', tags:['Licencia comercial','Spots','SFX'], featured:true },
+    { type:'Música premium', name:'Artlist', url:'https://artlist.io', price:'paid', desc:'Música y efectos de sonido premium. Licencia universal para cualquier uso comercial con suscripción.', tags:['Premium','Licencia universal','Música'] },
+    { type:'Música de artistas', name:'Musicbed', url:'https://musicbed.com', price:'paid', desc:'Música de artistas reales para publicidad. Cuando necesitas una canción con alma, no solo un tema de librería.', tags:['Artistas reales','Premium','Spots'] },
+    { type:'Música gratuita', name:'Free Music Archive', url:'https://freemusicarchive.org', price:'free', desc:'Archivo de música gratuita con licencias Creative Commons. Para proyectos con presupuesto cero.', tags:['Creative Commons','Gratis','Archivo'] },
+  ]},
+  { id:'motion', name:'Ilustración & Motion', tools:[
+    { type:'Portfolios creativos', name:'Dribbble', url:'https://dribbble.com', price:'free', desc:'Portfolios de ilustradores, animadores y diseñadores. Para encontrar talento por estilo visual específico.', tags:['Portfolios','Talento','Ilustración'], featured:true },
+    { type:'Títulos de cine', name:'Art of the Title', url:'https://artofthetitle.com', price:'free', desc:'Archivo de secuencias de títulos de cine y TV. Motion graphics y diseño de títulos analizados en detalle.', tags:['Títulos','Motion','Análisis'] },
+    { type:'Motion graphics', name:'Stash Media', url:'https://stashmedia.tv', price:'freemium', desc:'Archivo de motion graphics, animación y spots. Para referencias de animación publicitaria y técnicas visuales.', tags:['Motion graphics','Animación','Spots'] },
+    { type:'End cards', name:'Art of End Cards', url:'https://theartofendcards.com', price:'free', desc:'La única referencia especializada en end cards de spots. Para resolver cómo conviven logo, claim, pack shot y legal.', tags:['End cards','TV','Logo'] },
+  ]},
+  { id:'campaigns', name:'Archivo de campañas', tools:[
+    { type:'Campañas diarias', name:'The Drum Creative Works', url:'https://thedrum.com/creative-works', price:'free', desc:'Campañas nuevas de todo el mundo actualizadas cada día. El pulso en tiempo real de lo que se está produciendo.', tags:['Actualidad','Diario','Global'], featured:true },
+    { type:'Archivo de campañas', name:'Ads of the World', url:'https://adsoftheworld.com', price:'free', desc:'La mayor base de datos de campañas globales. Filtra por sector, país y medio. Para ver el territorio competitivo de tu cliente.', tags:['Campañas','Por sector','Global'] },
+    { type:'Directorio de agencias', name:'AdForum', url:'https://adforum.com', price:'free', desc:'Agencias, productoras y campañas filtradas por premios. Para investigar el historial creativo de un cliente o una categoría.', tags:['Agencias','Premios','Historia'] },
+    { type:'Casos creativos', name:'Campaigns of the World', url:'https://campaignsoftheworld.com', price:'free', desc:'Campañas con contexto estratégico. Entiende por qué se tomaron las decisiones visuales y de copy.', tags:['Estrategia','Contexto','Global'] },
+    { type:'Archivo histórico', name:'Vintage Ad Browser', url:'https://vintageadbrowser.com', price:'free', desc:'Publicidad clásica pre-digital. Para entender los orígenes visuales y de copy de una marca.', tags:['Vintage','Histórico','Marcas'] },
+  ]},
+  { id:'festivals', name:'Festivales', tools:[
+    { type:'Archivo Cannes', name:'Love The Work More', url:'https://lovetheworkmore.com', visitUrl:'https://lovetheworkmore.com', price:'free', desc:'Todos los Grand Prix de Cannes Lions desde 1954 hasta hoy. La memoria más completa de la publicidad premiada.', tags:['Archivo','1954–hoy','Gratis'], award:'Grand Prix desde 1954', featured:true },
+    { type:'El festival', name:'Cannes Lions', url:'https://canneslions.com', visitUrl:'https://canneslions.com/awards', price:'free', desc:'El festival más importante del mundo desde 1954. El benchmark global de la creatividad en todas las disciplinas.', tags:['Cannes, Junio','Global','Todas las disciplinas'], award:"Grand Prix · Titanium · Lion d'Or", featured:true },
+    { type:'Diseño & dirección de arte', name:'D&AD', url:'https://dandad.org', visitUrl:'https://dandad.org/work/annual', price:'free', desc:'El benchmark del diseño y la publicidad desde 1962. Ganar un Black Pencil es el máximo reconocimiento creativo.', tags:['Londres','Diseño','Film','Copy'], award:'Black Pencil · Yellow Pencil · Wood Pencil' },
+    { type:'Publicidad integral', name:'Clio Awards', url:'https://clios.com', visitUrl:'https://clios.com/awards/winners', price:'free', desc:'Fundados en 1959, uno de los premios más veteranos. Excelencia en publicidad, diseño y entretenimiento.', tags:['Nueva York','Global','Publicidad integral'], award:'Grand Clio · Gold · Silver · Bronze' },
+    { type:'Craft & copywriting', name:'The One Show', url:'https://www.oneclub.org', visitUrl:'https://www.oneclub.org/the-one-show/', price:'free', desc:'El festival del One Club. Idea y ejecución inseparables. Muy valorado en copywriting y craft cinematográfico.', tags:['Nueva York','Craft','Copy'], award:'Gold Pencil · Best of Show' },
+    { type:'Festival iberoamericano', name:'El Sol', url:'https://elsolfestival.com', visitUrl:'https://elsolfestival.com/edic-anteriores/palmares/', price:'free', desc:'Referencia iberoamericana desde 1986, celebrado en Málaga. 40 ediciones de lo mejor de España y LATAM.', tags:['Málaga, Mayo','España + LATAM','40 ediciones'], award:'Sol de Platino · Gran Premio · Sol de Oro' },
+    { type:'Premios nacionales', name:'C de C', url:'https://www.clubdecreatividad.com', visitUrl:'https://www.clubdecreatividad.com', price:'free', desc:'Premios Nacionales de Creatividad del Club de Creativos. La radiografía más honesta de la creatividad española.', tags:['San Sebastián, Marzo','España','Todas las disciplinas'], award:'Gran Premio · Oro · Plata · Bronce' },
+    { type:'Arte dirección & diseño', name:'ADC Annual Awards', url:'https://adcglobal.org', visitUrl:'https://adcglobal.org', price:'free', desc:'Los premios del Art Directors Club, fundados en 1921. El reconocimiento más antiguo del diseño gráfico.', tags:['Nueva York','Dirección de arte','Diseño gráfico'], award:'Black Cube · Gold Cube · Silver Cube' },
+  ]},
+];
+
+// New tools to add
+SUBCATEGORIES.find(s=>s.id==='cinematography').tools.push(
+  { type:'Desbloqueo creativo', name:'Unblock Coffee', url:'https://www.unblock.coffee', price:'free', desc:'Herramienta de desbloqueo creativo con prompts visuales aleatorios. Para cuando necesitas un empujón inesperado.', tags:['Desbloqueo','Prompts','Aleatorio'] }
+);
+
+let currentTab = null;
+const screenshotCache = new Map();
+
+function getDomain(url) { try { return new URL(url).hostname; } catch { return ''; } }
+function getInitials(name) { return name.split(/[\s&]+/).map(w=>w[0]).filter(Boolean).slice(0,2).join('').toUpperCase(); }
+function thumbURL(url) { return `https://www.google.com/s2/favicons?domain=${getDomain(url)}&sz=64`; }
+function sortFeatured(tools) { return [...tools].sort((a,b)=>(b.featured?1:0)-(a.featured?1:0)); }
+function getScreenshotURL(url) { return `https://api.microlink.io/?url=${encodeURIComponent(url)}&screenshot=true&meta=false&embed=screenshot.url`; }
+
+// ═══ SCREENSHOT PREVIEW ═══
+const previewEl = document.getElementById('screenshotPreview');
+const previewImg = previewEl.querySelector('img');
+const previewLoading = previewEl.querySelector('.loading');
+let previewTimeout = null;
+let currentPreviewUrl = null;
+
+function showScreenshotPreview(url, event) {
+  if (window.innerWidth <= 768) return;
+  clearTimeout(previewTimeout);
+  currentPreviewUrl = url;
+  updatePreviewPosition(event);
+  previewLoading.style.display = 'flex';
+  previewImg.style.display = 'none';
+  previewEl.classList.add('visible');
+  if (screenshotCache.has(url)) {
+    previewImg.src = screenshotCache.get(url);
+    previewImg.style.display = 'block';
+    previewLoading.style.display = 'none';
+    return;
+  }
+  const screenshotUrl = getScreenshotURL(url);
+  const img = new Image();
+  img.onload = () => { if(currentPreviewUrl===url){screenshotCache.set(url,screenshotUrl);previewImg.src=screenshotUrl;previewImg.style.display='block';previewLoading.style.display='none';} };
+  img.onerror = () => { if(currentPreviewUrl===url) hideScreenshotPreview(); };
+  img.src = screenshotUrl;
+}
+function updatePreviewPosition(event) {
+  if (!previewEl.classList.contains('visible')) return;
+  const x = event.clientX + 20, y = event.clientY + 20;
+  previewEl.style.left = Math.min(x, window.innerWidth - 340) + 'px';
+  previewEl.style.top = Math.min(y, window.innerHeight - 220) + 'px';
+}
+function hideScreenshotPreview() { previewEl.classList.remove('visible'); currentPreviewUrl = null; }
+
+// ═══ NAVIGATION ═══
+function selectTab(id, pushState=true) {
+  const sub = SUBCATEGORIES.find(s => s.id === id) || SUBCATEGORIES[0];
+  currentTab = sub.id;
+  if (pushState) history.pushState(null, '', '#' + sub.id);
+  renderTabs();
+  renderTools(sub);
+  setTimeout(observeFadeUp, 30);
+}
+window.addEventListener('popstate', () => { selectTab(location.hash.replace('#','') || SUBCATEGORIES[0].id, false); });
+
+// ═══ RENDER ═══
+function renderTabs() {
+  document.getElementById('subTabs').innerHTML = SUBCATEGORIES.map(sc =>
+    `<button class="sub-tab ${sc.id===currentTab?'active':''}" onclick="selectTab('${sc.id}')">${sc.name}</button>`
+  ).join('');
+}
+
+function renderTools(sub) {
+  const sorted = sortFeatured(sub.tools);
+  const grid = document.getElementById('toolGrid');
+  grid.innerHTML = sorted.map(t => toolCardHTML(t)).join('');
+  grid.querySelectorAll('.tool-card').forEach((card, i) => {
+    const tool = sorted[i];
+    card.addEventListener('mouseenter', e => { previewTimeout = setTimeout(() => showScreenshotPreview(tool.url, e), 300); });
+    card.addEventListener('mousemove', updatePreviewPosition);
+    card.addEventListener('mouseleave', () => { clearTimeout(previewTimeout); hideScreenshotPreview(); });
+  });
+}
+
+function toolCardHTML(t) {
+  const priceLabel = {free:'Gratis',paid:'De pago',freemium:'Freemium'}[t.price];
+  const priceClass = {free:'price-free',paid:'price-paid',freemium:'price-freemium'}[t.price];
+  const linkUrl = t.visitUrl || t.url;
+  const award = t.award ? `<span class="fest-award">${t.award}</span>` : '';
+  const isFest = currentTab === 'festivals';
+  const initials = getInitials(t.name);
+  const featuredBadge = t.featured
+    ? `<span class="tc-featured"><svg viewBox="0 0 24 24" fill="currentColor" stroke="none"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>Destacado</span>` : '';
+
+  return `
+    <div class="tool-card fade-up" data-url="${t.url}">
+      <div class="tc-header">
+        <div class="tc-thumb"><img src="${thumbURL(t.url)}" alt="" onerror="this.parentElement.innerHTML='<span class=tc-thumb-fallback>${initials}</span>'" /></div>
+        <div class="tc-meta">
+          <span class="tc-type">${t.type}</span>
+          <div class="tc-name-row"><span class="tc-name">${t.name}</span>${featuredBadge}</div>
+        </div>
+        <div class="tc-price-wrap"><span class="price-badge ${priceClass}">${priceLabel}</span></div>
+      </div>
+      ${award}
+      <a class="tc-url" href="${t.url}" target="_blank">${t.url.replace('https://','')}</a>
+      <p class="tc-desc">${t.desc}</p>
+      <div class="tc-tags">${t.tags.map(tag=>`<span class="tc-tag">${tag}</span>`).join('')}</div>
+      <a class="tc-open ${isFest?'primary':''}" href="${linkUrl}" target="_blank">${isFest?'Ver ganadores →':'Abrir →'}</a>
+    </div>`;
+}
+
+// ═══ SEARCH ═══
+function openSearch() { document.getElementById('searchOverlay').classList.add('open'); document.getElementById('searchInput').value=''; document.getElementById('searchResults').innerHTML=''; setTimeout(()=>document.getElementById('searchInput').focus(),60); }
+function closeSearch() { document.getElementById('searchOverlay').classList.remove('open'); }
+
+function doSearch(q) {
+  q = q.trim().toLowerCase();
+  const results = document.getElementById('searchResults');
+  if(!q){results.innerHTML='';return;}
+  const all = []; SUBCATEGORIES.forEach(sc=>sc.tools.forEach(t=>all.push({...t,subName:sc.name,subId:sc.id})));
+  const matched = all.filter(t=>t.name.toLowerCase().includes(q)||t.desc.toLowerCase().includes(q)||t.type.toLowerCase().includes(q)||t.tags.some(tag=>tag.toLowerCase().includes(q)));
+  const seen=new Set(); const unique=matched.filter(t=>{if(seen.has(t.name))return false;seen.add(t.name);return true;});
+  if(!unique.length){results.innerHTML='<div class="search-empty">No se encontraron resultados</div>';return;}
+  results.innerHTML=unique.map(t=>`
+    <a class="search-result-item" href="${t.visitUrl||t.url}" target="_blank" onclick="closeSearch();selectTab('${t.subId}')">
+      <span class="sr-name">${t.name}${t.featured?' ★':''}</span>
+      <span class="sr-meta">${t.subName}</span>
+      <span class="sr-desc">${t.desc.substring(0,100)}${t.desc.length>100?'…':''}</span>
+    </a>`).join('');
+}
+document.getElementById('searchInput').addEventListener('input',e=>doSearch(e.target.value));
+document.addEventListener('keydown',e=>{
+  if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();openSearch();}
+  if(e.key==='Escape')closeSearch();
+});
+
+// ═══ THEME TOGGLE ═══
+const themeToggleBtn = document.getElementById('themeToggle');
+const themeIcon = themeToggleBtn.querySelector('.material-symbols-outlined');
+
+function setTheme(isLight) {
+  if (isLight) {
+    document.documentElement.classList.add('light-mode');
+    themeIcon.textContent = 'dark_mode';
+  } else {
+    document.documentElement.classList.remove('light-mode');
+    themeIcon.textContent = 'light_mode';
+  }
+}
+themeToggleBtn.addEventListener('click', () => {
+  setTheme(!document.documentElement.classList.contains('light-mode'));
+});
+
+// ═══ GOOGLY EYES ═══
+document.addEventListener('mousemove', e => {
+  document.querySelectorAll('.eye').forEach(eye => {
+    const pupil = eye.querySelector('.pupil');
+    const rect = eye.getBoundingClientRect();
+    const cx = rect.left + rect.width/2, cy = rect.top + rect.height/2;
+    const angle = Math.atan2(e.clientY - cy, e.clientX - cx);
+    const dist = Math.min(3, Math.hypot(e.clientX - cx, e.clientY - cy));
+    pupil.style.transform = `translate(${Math.cos(angle)*dist}px, ${Math.sin(angle)*dist}px)`;
+  });
+});
+
+// ═══ SCROLL ANIMATIONS ═══
+function observeFadeUp() {
+  const observer = new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('visible');observer.unobserve(entry.target);}});
+  },{threshold:0.08});
+  document.querySelectorAll('.fade-up:not(.visible)').forEach(el=>observer.observe(el));
+}
+
+// ═══ INIT ═══
+(function(){
+  setTheme(false); // dark mode default
+  const hash = location.hash.replace('#','') || SUBCATEGORIES[0].id;
+  selectTab(hash, false);
+  observeFadeUp();
+})();
+
+</script>
+</body>
+</html>
